@@ -106,4 +106,13 @@ interface BimayService {
     fun getSerial(@Header("Cookie") cookie: String,
                   @Query(value = "serial") serial: String,
                   @Header("Referer") referrer: String): Single<Response<ResponseBody>>
+
+    @Headers("Referer: https://binusmaya.binus.ac.id/newstudent/",
+            "User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36")
+    @POST("https://binusmaya.binus.ac.id/services/ci/index.php/BlendedLearning/VideoConference/getList/{courseId}/{crseId}/{term}/{classNumber}")
+    fun getVideoConferences(@Path("courseId") courseId: String,
+                            @Path("crseId") crseId: String,
+                            @Path("term") term: String,
+                            @Path("classNumber") classNumber: String,
+                            @Header("Cookie") cookie: String): Single<List<VideoConferenceModel>>
 }
