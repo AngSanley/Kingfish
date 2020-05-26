@@ -38,6 +38,9 @@ class SessionRecyclerAdapter(
                 itemView.journalShift.visibility = View.GONE
                 itemView.journalCode.visibility = View.GONE
                 color = "#f44336"
+            } else if (session.deliveryMode == "VC") {
+                itemView.journalMode.text = "VC"
+                color = "#48bb78"
             } else {
                 if (!ctx.readPref(R.string.campus_setting, false, "com.directdev.portal_preferences")) {
                     itemView.journalCampus.text = session.locationId
